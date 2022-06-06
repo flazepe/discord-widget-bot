@@ -1,0 +1,9 @@
+{
+	"botID": "discord bot id",
+	"botToken": "discord bot token",
+	"channelID": "discord channel id for the widget",
+	"apiPorts": {
+		"rest": 2493,
+		"webSocket": 2494
+	}
+}

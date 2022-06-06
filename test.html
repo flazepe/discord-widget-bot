@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Discord Widget Embed</title>
+	</head>
+	<body>
+		<div id="discord-widget-embed"></div>
+
+		<script src="widget-embed/index.js"></script>
+		
+		<script>
+			buildDiscordWidgetEmbed({
+				selector: "#discord-widget-embed",
+				widgetURL: "http://localhost:3001",
+				text: {
+					open: "Get Support",
+					close: "Close Chatbox"
+				}
+			});
+		</script>
+	</body>
+</html>
