@@ -90,7 +90,11 @@ export default function ({
 								</div>
 								<div className="whitespace-pre-wrap break-all">
 									{_message.content}
-									{_message.edited_timestamp && <span className="text-[10px] text-[#aaa] ml-1">(edited)</span>}
+									{_message.edited_timestamp && (
+										<span className="text-[10px] text-[#aaa] ml-1" title={new Date(_message.edited_timestamp).toLocaleString()}>
+											(edited)
+										</span>
+									)}
 								</div>
 							</div>
 
