@@ -105,8 +105,8 @@ createServer(async (req, res) => {
 
 					if (!webhook || webhook?.message) return console.error(`Could not create bot webhook: ${webhook?.message ?? "Unknown."}`);
 
-					console.info("Webhook created and cached.");
 					cache.webhook = webhook;
+					console.info("Webhook created and cached.");
 				}
 			}
 
@@ -118,8 +118,8 @@ createServer(async (req, res) => {
 					username,
 					content: message.slice(0, 1024)
 				})
-				.catch(() => res.writeHead(500, { "access-control-allow-origin": "*" }).end())
-				.then(() => res.writeHead(200, { "access-control-allow-origin": "*" }));
+				.then(() => res.writeHead(200, { "access-control-allow-origin": "*" }))
+				.catch(() => res.writeHead(500, { "access-control-allow-origin": "*" }).end());
 
 			break;
 		}
