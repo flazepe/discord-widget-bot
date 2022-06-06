@@ -27,16 +27,20 @@ export default function ({
 		);
 	};
 
-	useEffect(() => {
-		setInterval(() => {
+	const scrollToBottom = () => {
+		setTimeout(() => {
 			const messagesElement = document.querySelector("#messages");
-			if (messagesElement) messagesElement.scrollTop = messagesElement.scrollHeight;
+			if (!messagesElement) return scrollToBottom();
+			messagesElement.scrollTop = messagesElement.scrollHeight;
 		});
+	};
 
+	useEffect(() => {
 		fetch(`${rest.host}:${rest.port}/get-messages`)
 			.then(res => res.json())
 			.then(_json => {
 				setMessages(_json);
+				scrollToBottom();
 
 				const ws = new WebSocket(`${webSocket.host}:${webSocket.port}`);
 
@@ -60,6 +64,11 @@ export default function ({
 					}
 
 					setMessages(_previousValue => ({ ..._previousValue, ..._messages }));
+
+					const messagesElement = document.querySelector("#messages");
+
+					if (messagesElement && messagesElement.scrollTop + messagesElement.clientHeight === messagesElement.scrollHeight)
+						scrollToBottom();
 				};
 			})
 			.catch(() => null);
@@ -67,7 +76,7 @@ export default function ({
 
 	return (
 		<div className="fixed w-full h-full bg-[#36393f] p-4">
-			<div className="h-[90%] overflow-hidden" id="messages">
+			<div className="h-[90%] overflow-auto" id="messages">
 				{Object.values(messages)
 					.filter(Boolean)
 					.map((_message, _index) => (
