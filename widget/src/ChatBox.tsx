@@ -82,8 +82,11 @@ export default function ({
 							/>
 							<div>
 								<div>
-									<span className="font-bold mr-1" title={`${_message.author.username}#${_message.author.discriminator}`}>
-										{_message.author.username}
+									<span
+										className="font-bold mr-1"
+										title={`${_message.author.username}#${_message.author.discriminator} (${_message.author.id})`}
+									>
+										{_message.member?.nick ?? _message.author.username}
 									</span>
 									{_message.author.bot && <span className="w-2 bg-[#5865f2] text-xs m-1 px-1 py-0.5 rounded-sm">BOT</span>}
 									<small className="m-1">{new Date(_message.timestamp).toLocaleString()}</small>
