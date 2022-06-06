@@ -44,8 +44,6 @@ shard
 	.on("event", async ({ t, d }) => {
 		if (d.channel_id !== config.channelID) return;
 
-		cache.wsClients.forEach(_ws => _ws.send(JSON.stringify({ t, d })));
-
 		switch (t) {
 			case "MESSAGE_CREATE":
 			case "MESSAGE_UPDATE":
@@ -55,7 +53,12 @@ shard
 			case "MESSAGE_DELETE":
 				delete cache.messages[d.id];
 				break;
+
+			default:
+				return;
 		}
+
+		cache.wsClients.forEach(_ws => _ws.send(JSON.stringify({ t, d })));
 	})
 	.on("close", () => setTimeout(() => shard.connect(), 5000))
 	.connect();
