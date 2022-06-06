@@ -54,10 +54,10 @@ function buildDiscordWidgetEmbed({ selector, widgetURL, text }) {
 	// Render function
 	function render() {
 		if (toggled) {
-			button.innerText = text.close;
+			button.innerText = "Close";
 			button.style.bottom = null;
 		} else {
-			button.innerText = text.open;
+			button.innerText = text;
 			button.style.bottom = 0;
 		}
 
