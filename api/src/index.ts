@@ -126,7 +126,7 @@ createServer(async (req, res) => {
 				const fetchedMessages = (await rest.get(`channels/${config.channelID}/messages?limit=100`).catch(() => null))?.body;
 
 				if (Array.isArray(fetchedMessages)) {
-					cache.messages = Object.fromEntries(fetchedMessages.map(_message => [_message.id, _message]));
+					cache.messages = Object.fromEntries(fetchedMessages.reverse().map(_message => [_message.id, _message]));
 					console.info("Cached last 100 messages.");
 				}
 			}
