@@ -2,6 +2,10 @@
 
 A (very) basic Discord widget embed for your website. It only supports one channel, which is good if you want to embed a Discord channel in your website for your support server.
 
+# Disclaimer
+
+This widget and its API have no authentication nor ratelimits, so anybody could abuse it. This is meant to be a small project, not for production use.
+
 # Setup
 
 ## API
