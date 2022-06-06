@@ -1,5 +1,13 @@
 function buildDiscordWidgetEmbed({ selector, widgetURL, text }) {
+	// Base container
 	const base = document.createElement("div");
+
+	Object.entries({
+		left: 0,
+		position: "fixed",
+		top: 0
+	}).forEach(([_property, _value]) => (base.style[_property] = _value));
+
 	document.querySelector(selector).appendChild(base);
 
 	// Toggle button
@@ -37,7 +45,6 @@ function buildDiscordWidgetEmbed({ selector, widgetURL, text }) {
 	Object.entries({
 		border: "none",
 		height: "100%",
-		margin: "-8px",
 		position: "fixed",
 		width: "100%"
 	}).forEach(([_property, _value]) => (iframe.style[_property] = _value));
