@@ -8,7 +8,7 @@ A (very) basic Discord widget embed for your website. It only supports one chann
 
 1. Navigate to the `api` folder.
 2. Make sure you have `npm` and `typescript` installed globally and run `npm i && tsc`.
-3. Create a `config.json` file and configure the credentials (example is included in the `config.example.json` file)
+3. Create a `config.json` file and configure the credentials (example is included in the `config.example.json` file).
 4. Run `node .`.
 
 ## Widget
